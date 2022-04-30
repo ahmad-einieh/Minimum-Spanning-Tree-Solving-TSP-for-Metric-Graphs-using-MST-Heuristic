@@ -14,9 +14,8 @@ public class MinimumSpanningTree {
 
         ArrayList<Vertex> vertices = graph.getVertices();
         for (var v : vertices) {
-            Vertex v2 = v;
-            v2.dgeree = 0;
-            MSTGraph.addVertex(v2);
+            v.dgeree = 0;
+            MSTGraph.addVertex(v);
         }
 
         int numOfEdge = graph.getNumOfEdges();
@@ -29,7 +28,7 @@ public class MinimumSpanningTree {
         int[] root = new int[numOfVertices];
 
 
-        makeSet(root, graph);
+        makeSet(root);
 
         int index = 0;
         while (index < numOfVertices - 1) {
@@ -49,7 +48,7 @@ public class MinimumSpanningTree {
 
     }
 
-    private void makeSet(int[] root, GraphBuilder graph) {
+    private void makeSet(int[] root) { // before (int[] root, GraphBuilder graph)
         for (int i = 0; i < root.length; i++) {
             root[i] = i;
         }

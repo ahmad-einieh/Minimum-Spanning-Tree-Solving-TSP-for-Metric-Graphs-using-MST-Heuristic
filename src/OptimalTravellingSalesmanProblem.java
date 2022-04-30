@@ -11,7 +11,7 @@ public class OptimalTravellingSalesmanProblem {
     }
 
     public int optTSPSolution(GraphBuilder originalGraph, int start) {
-        ArrayList<Integer> perVertics = new ArrayList<>();
+        ArrayList<Integer> perVertices = new ArrayList<>();
         ArrayList<Vertex> currentPath = new ArrayList<>();
 
         ArrayList<Vertex> vertices = originalGraph.getVertices();
@@ -23,7 +23,7 @@ public class OptimalTravellingSalesmanProblem {
 
         for (int i = 0; i < adjMatrix.length; i++) {
             if (i != start) {
-                perVertics.add(i);
+                perVertices.add(i);
             }
         }
 
@@ -35,10 +35,10 @@ public class OptimalTravellingSalesmanProblem {
 
             int currentVertexId = start;
 
-            for (int i = 0; i < perVertics.size(); i++) {
+            for (Integer perVertic : perVertices) {
 
-                currentPathWeight += adjMatrix[currentVertexId].get(perVertics.get(i));
-                currentVertexId = perVertics.get(i);
+                currentPathWeight += adjMatrix[currentVertexId].get(perVertic);
+                currentVertexId = perVertic;
                 Vertex currentVertex = optTSPGraph.isVertexObjectById(currentVertexId);
                 currentPath.add(currentVertex);
 
@@ -47,7 +47,7 @@ public class OptimalTravellingSalesmanProblem {
             minPathWeight = min(minPathWeight, currentPathWeight, currentPath);
 
 
-        } while (findNextPermutation(perVertics));
+        } while (findNextPermutation(perVertices));
 
         Vertex startVertex = optTSPGraph.isVertexObjectById(start);
         minPath.add(0, startVertex);

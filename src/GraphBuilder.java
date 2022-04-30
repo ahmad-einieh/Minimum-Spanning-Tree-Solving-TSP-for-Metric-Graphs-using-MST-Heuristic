@@ -53,8 +53,7 @@ public class GraphBuilder {
     }
 
     public boolean isVertex(Vertex v) {
-        for (int i = 0; i < vertices.size(); i++) {
-            Vertex vertex = vertices.get(i);
+        for (Vertex vertex : vertices) {
             if (vertex.id == v.id || vertex.x == v.x && vertex.y == v.y)
                 return true;
         }
@@ -62,8 +61,7 @@ public class GraphBuilder {
     }
 
     public Vertex isVertexObjectById(int vertexId) {
-        for (int i = 0; i < vertices.size(); i++) {
-            Vertex vertex = vertices.get(i);
+        for (Vertex vertex : vertices) {
             if (vertex.id == vertexId)
                 return vertex;
         }
@@ -71,19 +69,17 @@ public class GraphBuilder {
     }
 
 
-    public boolean addEdge(Vertex source, Vertex destination, int weight) {
+    public void addEdge(Vertex source, Vertex destination, int weight) {
         if (source == destination)
-            return false;
+            return;
 
         Edge edge = new Edge(source, destination, weight);
         edges.add(edge);
 
-        return true;
     }
 
     public boolean isEdge(Vertex source, Vertex destination) {
-        for (int i = 0; i < edges.size(); i++) {
-            Edge edge = edges.get(i);
+        for (Edge edge : edges) {
             if (edge.source.id == source.id && edge.destination.id == destination.id
                     || edge.source.id == destination.id && edge.destination.id == source.id)
                 return true;
@@ -92,8 +88,7 @@ public class GraphBuilder {
     }
 
     public Edge isEdgeObjectById(int source, int destination) {
-        for (int i = 0; i < edges.size(); i++) {
-            Edge edge = edges.get(i);
+        for (Edge edge : edges) {
             if (edge.source.id == source && edge.destination.id == destination)
                 return edge;
             else if (edge.source.id == destination && edge.destination.id == source) { // because the graph is undirected
@@ -135,7 +130,7 @@ public class GraphBuilder {
         int numOfVertices = vertices.size();
         ArrayList<Integer>[] AdjMat = new ArrayList[numOfVertices];
         for (int i = 0; i < numOfVertices; i++) {
-            AdjMat[i] = new ArrayList<Integer>();
+            AdjMat[i] = new ArrayList();
         }
 
         for (int i = 0; i < numOfVertices; i++) {
@@ -144,8 +139,7 @@ public class GraphBuilder {
             }
         }
 
-        for (int i = 0; i < edges.size(); i++) {
-            Edge edge = edges.get(i);
+        for (Edge edge : edges) {
             int source = edge.source.id, destination = edge.destination.id;
             AdjMat[source].set(destination, edge.weight);
             AdjMat[destination].set(source, edge.weight);
@@ -159,11 +153,10 @@ public class GraphBuilder {
         int numOfVertices = vertices.size();
         LinkedList<Integer>[] Adjlist = new LinkedList[numOfVertices];
         for (int i = 0; i < numOfVertices; i++) {
-            Adjlist[i] = new LinkedList<Integer>();
+            Adjlist[i] = new LinkedList();
         }
 
-        for (int i = 0; i < edges.size(); i++) {
-            Edge edge = edges.get(i);
+        for (Edge edge : edges) {
             int source = edge.source.id, destination = edge.destination.id;
             Adjlist[source].add(destination);
             Adjlist[destination].add(source);

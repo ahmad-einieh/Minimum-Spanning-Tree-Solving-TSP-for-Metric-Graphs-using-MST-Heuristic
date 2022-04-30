@@ -63,14 +63,12 @@ public class ApproximationAlgorithm {
         }
 
         ArrayList<Edge> edgesMST = MSTGraph.getEdges();
-        for (int i = 0; i < edgesMST.size(); i++) {
-            Edge edge = edgesMST.get(i);
+        for (Edge edge : edgesMST) {
             combineGraph.addEdge(edge.source, edge.destination, edge.weight);
         }
 
         ArrayList<Edge> edgesmWPM = mWPMGraph.getEdges();
-        for (int i = 0; i < edgesmWPM.size(); i++) {
-            Edge edge = edgesmWPM.get(i);
+        for (Edge edge : edgesmWPM) {
             combineGraph.addEdge(edge.source, edge.destination, edge.weight);
         }
 
@@ -103,8 +101,7 @@ public class ApproximationAlgorithm {
         ArrayList<Vertex> oddVertices = new ArrayList<>();
         ArrayList<Vertex> MSTVertices = graph.getVertices();
 
-        for (int i = 0; i < MSTVertices.size(); i++) {
-            Vertex vertex = MSTVertices.get(i);
+        for (Vertex vertex : MSTVertices) {
             if (vertex.dgeree % 2 != 0) {
                 oddVertices.add(vertex);
             }
@@ -118,8 +115,8 @@ public class ApproximationAlgorithm {
     public void printApproxPath() {
         ArrayList<Edge> approxEdges = chritoGraph.getEdges();
         System.out.print("Approximation cost path = [");
-        for (int i = 0; i < approxEdges.size(); i++) {
-            Vertex vertex = approxEdges.get(i).source;
+        for (Edge approxEdge : approxEdges) {
+            Vertex vertex = approxEdge.source;
             System.out.print(" " + vertex.id + ",");
         }
         Vertex vertex = approxEdges.get(0).source;

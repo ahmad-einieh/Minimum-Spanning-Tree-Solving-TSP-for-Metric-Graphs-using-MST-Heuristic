@@ -18,5 +18,4 @@ public class Vertex {
         this.dgeree = v.dgeree;
     }
 
-
 }
