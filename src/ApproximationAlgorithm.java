@@ -80,9 +80,7 @@ public class ApproximationAlgorithm {
         GraphBuilder mWPMGraph = new GraphBuilder();
         ArrayList<Vertex> oddVertices = findOddNodes(mstGraph);
 
-        for (var v : oddVertices) {
-            mWPMGraph.addVertex(v);
-        }
+        for (Vertex v : oddVertices) mWPMGraph.addVertex(v);
 
         int i = 0;
         while (i < oddVertices.size()) {

@@ -4,7 +4,7 @@ public class Vertex {
     int y;
     int dgeree;
 
-    public Vertex(int id, int x, int y) {
+    public Vertex( int x, int y,int id) {
         this.id = id;
         this.x = x;
         this.y = y;

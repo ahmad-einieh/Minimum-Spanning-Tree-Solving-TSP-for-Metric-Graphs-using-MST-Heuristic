@@ -47,8 +47,8 @@ public class EulerianCircuit {
         boolean[] isVisited = new boolean[euGraph.getNumOfVertices()];
         int countWith = DFSCount(src, isVisited);
 
-        adjList[src].remove();
-        adjList[des].remove();
+        adjList[src].remove(des);
+        adjList[des].remove(src);
 
         isVisited = new boolean[euGraph.getNumOfVertices()];
         int countWithout = DFSCount(src, isVisited);
@@ -56,7 +56,7 @@ public class EulerianCircuit {
         adjList[src].add(des);
         adjList[des].add(src);
 
-        return countWith > countWithout;
+        return countWith <= countWithout;
 
 
     }

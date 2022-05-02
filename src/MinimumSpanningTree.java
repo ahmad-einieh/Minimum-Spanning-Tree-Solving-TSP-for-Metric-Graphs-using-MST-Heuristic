@@ -36,7 +36,7 @@ public class MinimumSpanningTree {
             int srcSet = find(root, edge.source.id);
             int desSet = find(root, edge.destination.id);
 
-            if (srcSet < desSet) {
+            if (srcSet != desSet) {
                 edge.source.dgeree++;
                 edge.destination.dgeree++;
                 MSTGraph.addEdge(edge.source, edge.destination, edge.weight);

@@ -11,8 +11,10 @@ public class Edge {
     }
 
     public Edge(Edge e) {
-        this.source = e.source;
-        this.destination = e.destination;
+        Vertex copyVertexSRC = new Vertex(e.source);
+        Vertex copyVertexDES = new Vertex(e.destination);
+        this.source = copyVertexSRC;
+        this.destination = copyVertexDES;
         this.weight = e.weight;
     }
 
