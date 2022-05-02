@@ -14,7 +14,7 @@ public class Main {
         graphBuilder.addVertex();
         graphBuilder.addVertex();
         graphBuilder.addVertex();
-        graphBuilder.addVertex();
+        //graphBuilder.addVertex();
 
         graphBuilder.generateMetricGraph();
 
